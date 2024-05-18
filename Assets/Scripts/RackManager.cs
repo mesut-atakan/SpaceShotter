@@ -1,18 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+
 
 public class RackManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region <<<< Serialize Fields >>>>
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Spawner")]
+
+    [SerializeField] private Vector2 randomSpawnPoint;
+    [SerializeField] private float spawnerZAxis;
+
+    [Header("Spawner Properties")]
+
+    [SerializeField] private float spawnDurationSpeed = 3f;
+    [SerializeField] private float spawnDurationDecrease = 0.001f;
+    [SerializeField] private byte maxRackValue = 5;
+
+
+    [Header("Rack Properties")]
+
+    [SerializeField] private GameObject[] RackObjects;
+    [Range(0, 5), SerializeField] private float rackSpeed = 2.5f;
+
+    #endregion <<<< XXX >>>>
+
+
+
+
+    #region <<<< Private Fields >>>>
+
+
+    #endregion <<<< XXX >>>>
+
+
+
+
+
+    #region <<<< Properties >>>>
+
+    internal float GetRackSpeed => this.rackSpeed;
+    internal const float rackSpeedMultiply = 75;
+    
+
+    #endregion <<<< XXX >>>>
 }
