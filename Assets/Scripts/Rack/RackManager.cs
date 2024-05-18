@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class RackManager : MonoBehaviour
@@ -24,7 +25,10 @@ public class RackManager : MonoBehaviour
     [Range(0, 5), SerializeField] private float rackSpeed = 2.5f;
 
 
-    
+    [Header("Rack Object Pool")]
+
+    [SerializeField] private byte maxObject;
+
 
     #endregion <<<< XXX >>>>
 
@@ -34,6 +38,8 @@ public class RackManager : MonoBehaviour
     #region <<<< Private Fields >>>>
 
     private bool _isAttack = true;
+    private Queue<Rack> _racks = new Queue<Rack>();
+    private GameObject _racksParentObj;
 
     #endregion <<<< XXX >>>>
 
@@ -45,14 +51,17 @@ public class RackManager : MonoBehaviour
 
     internal float GetRackSpeed => this.rackSpeed;
     internal const float rackSpeedMultiply = 75;
-    
+
 
     #endregion <<<< XXX >>>>
 
 
 
 
-
+    private void Awake()
+    {
+        this._racksParentObj = new GameObject("RackParentObject");
+    }
 
 
 
@@ -76,4 +85,43 @@ public class RackManager : MonoBehaviour
         yield return new WaitForSeconds(this.spawnDurationSpeed);
         this._isAttack = true;
     }
+
+
+
+
+
+
+
+
+    #region <<<< Object Pool >>>>
+
+    /// <summary>
+    /// Bu fonksiyon ile meteorlar icin bir object pool olusturabilirsiniz!
+    /// </summary>
+    private void CreateRacketObjectPool()
+    {
+
+    }
+
+
+    /// <summary>
+    /// Bu fonksiyon ile birlikte object pool icersiine bir raket ekleyebilirsiniz!
+    /// </summary>
+    /// <param name="rack"></param>
+    private void AddToPool(Rack rack)
+    {
+
+    }
+
+    /// <summary>
+    /// Bu fonksiyon ile birlikte object pool icerisinden bir meteor cekebilirsiniz!
+    /// </summary>
+    /// <returns>Object pool icerisinde ilk sirada olan obje geri donderilecektir!</returns>
+    private Rack GetRack()
+    {
+        return null;
+    }
+
+
+    #endregion <<<< XXX >>>>
 }
