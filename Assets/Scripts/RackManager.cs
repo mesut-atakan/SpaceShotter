@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 
 
 public class RackManager : MonoBehaviour
@@ -23,6 +23,9 @@ public class RackManager : MonoBehaviour
     [SerializeField] private GameObject[] RackObjects;
     [Range(0, 5), SerializeField] private float rackSpeed = 2.5f;
 
+
+    
+
     #endregion <<<< XXX >>>>
 
 
@@ -30,6 +33,7 @@ public class RackManager : MonoBehaviour
 
     #region <<<< Private Fields >>>>
 
+    private bool _isAttack = true;
 
     #endregion <<<< XXX >>>>
 
@@ -44,4 +48,32 @@ public class RackManager : MonoBehaviour
     
 
     #endregion <<<< XXX >>>>
+
+
+
+
+
+
+
+
+
+    private void RackFire()
+    {
+
+    }
+
+
+
+
+
+    /// <summary>
+    /// Bu fonksiyon ile birlikte meteoor yagmurunun kac saniyede bir olacagini kontrol edebilirsiniz!
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator IsAttackControl()
+    {
+        this._isAttack = false;
+        yield return new WaitForSeconds(this.spawnDurationSpeed);
+        this._isAttack = true;
+    }
 }
