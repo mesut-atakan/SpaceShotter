@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+
 
 public class Rack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region <<<< Serialize Fields >>>>
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Classes")]
+
+    [SerializeField] private RackManager rackManager;
+    #endregion <<<< XXX >>>>
+
+
+
+    #region <<<< Private Fields >>>>
+
+
+    #endregion <<<< XXX >>>>
+
+
+    #region <<<< Properties >>>>
+
+    internal RackManager _rackManager { get => this.rackManager; set => this.rackManager = value; }
+
+    #endregion <<<< XXX >>>>
 }
