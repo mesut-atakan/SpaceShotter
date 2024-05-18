@@ -27,7 +27,7 @@ public class RackManager : MonoBehaviour
 
     [Header("Rack Object Pool")]
 
-    [SerializeField] private byte maxObject;
+    [SerializeField] private byte maxObjectValue;
 
 
     #endregion <<<< XXX >>>>
@@ -58,9 +58,18 @@ public class RackManager : MonoBehaviour
 
 
 
+
+
+
+
+
+
+
+
     private void Awake()
     {
         this._racksParentObj = new GameObject("RackParentObject");
+        this.CreateRacketObjectPool();
     }
 
 
@@ -100,7 +109,24 @@ public class RackManager : MonoBehaviour
     /// </summary>
     private void CreateRacketObjectPool()
     {
+        // ~~ Variables ~~
+        GameObject _createObject;
+        Rack _createRack;
 
+        for (int i = 0; i < maxObjectValue; i++)
+        {
+            _createObject = CreateRackObject();
+            _createObject.TryGetComponent(out _createRack);
+            
+            if (_createRack == null)
+            {
+                Debug.LogError("<color=red>Error</color> Meteor objesi icersiinde <i>`Rack`</i> sinifi bulunamadi", _createObject);
+            }
+            else if (_createRack._rackManager == null)
+                _createRack._rackManager = this;
+
+            AddToPool(_createRack);
+        }
     }
 
 
@@ -110,7 +136,9 @@ public class RackManager : MonoBehaviour
     /// <param name="rack"></param>
     private void AddToPool(Rack rack)
     {
-
+        this._racks.Enqueue(rack);
+        rack.gameObject.SetActive(false);
+        rack.transform.SetParent(this._racksParentObj.transform);
     }
 
     /// <summary>
@@ -119,7 +147,27 @@ public class RackManager : MonoBehaviour
     /// <returns>Object pool icerisinde ilk sirada olan obje geri donderilecektir!</returns>
     private Rack GetRack()
     {
-        return null;
+        // ~~ Variables ~~
+        Rack _rack;
+
+        _rack = this._racks.Dequeue();
+        _rack.gameObject.SetActive(true);
+        _rack.transform.SetParent(null);
+        return _rack;
+    }
+
+    /// <summary>
+    /// Bu fonksiyon ile bir meteor objesi olusturabilirsiniz!
+    /// </summary>
+    /// <returns>Olusturulan meteor geri donderilecektir!</returns>
+    private GameObject CreateRackObject()
+    {
+        // ~~ Variables ~~
+        byte _randomMeteorIndex;
+
+        _randomMeteorIndex = (byte)Random.Range(0, this.RackObjects.Length);
+
+        return Instantiate(this.RackObjects[_randomMeteorIndex]);
     }
 
 
