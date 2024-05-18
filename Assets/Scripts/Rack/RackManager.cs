@@ -129,6 +129,62 @@ public class RackManager : MonoBehaviour
 
 
 
+    /// <summary>
+    /// Bu fonksiyon ile birlikte asteroildinizin spawnlanacagi noktayi cekebilirsiniz!
+    /// Bir cok bugun onune gecmeye calisan moduler bir fonksiyon yazilmistir!
+    /// Kullanmaniz tavsiye edilir!
+    /// PERFORMANSI AZALTABILIR!!
+    /// </summary>
+    /// <returns></returns>
+    private Vector3 GetRackSpawnPosition()
+    {
+        // ~~ Variables ~~
+        Vector3 _spawnPos;
+        Vector2 _randomSpawnPoint;
+        bool _xAxisOK = false;
+        ushort _trail = 0;
+
+        _randomSpawnPoint = this.randomSpawnPoint;
+        _spawnPos = Vector3.zero;
+        _spawnPos.y = 0;
+        _spawnPos.z = this.spawnerZAxis;
+
+        do
+        {
+            if (_trail >= 100)
+            {
+                Debug.LogError($"<color=red><b>WARNING</b></color> Denem sayisi 100'u gecti!", this.gameObject);
+                return Vector3.zero;
+            }
+            _trail++;
+            _spawnPos.x = Random.Range(_randomSpawnPoint.x, _randomSpawnPoint.y);
+
+            _xAxisOK = false;
+            foreach (Transform _activeRack in this._activeRacks)
+            {
+                _xAxisOK = Vector3.Distance(_activeRack.position, _spawnPos) > _minDistance;
+                if (_xAxisOK == true)
+                {
+                    return _spawnPos;
+                }
+            }
+
+            if (!_xAxisOK && _trail >= 5)
+            {
+                _randomSpawnPoint.x++;
+                _randomSpawnPoint.y++;
+            }
+
+        }
+        while (_xAxisOK);
+
+        return Vector3.zero;
+    }
+
+
+
+
+
 
 
 
@@ -200,6 +256,55 @@ public class RackManager : MonoBehaviour
         return Instantiate(this.RackObjects[_randomMeteorIndex]);
     }
 
+
+    #endregion <<<< XXX >>>>
+
+
+
+
+
+
+    #region <<<< Active Rack Array >>>>
+
+    /// <summary>
+    /// Bu fonksiyon ile ActiveRack dizisi icerisinde aradiginiz elemani bulabilirsiniz!
+    /// </summary>
+    /// <param name="_rack">Aradiginiz elemanin rack sinifini giriniz!</param>
+    /// <returns>Aradiginiz rack sinifi bulunursa rack sinifi geri donderilir eger bulunamazsa bu fonksiyon geriye null degerini donderir!</returns>
+    private Rack GetActiveRack(Rack _rack)
+    {
+        foreach(Rack _activeRacks in this._activeRacks)
+        {
+            // Active Rack dizisi icersiindeki tum elemanlarin parametre olarak girilen rack sinifi ile uyumlu olup olmadigi kontrol ediliyor!
+            if (_activeRacks != null && _rack == _activeRacks)
+            {
+                // Eger Parametre olarak girilen rack sinifi dizi icerisindeki bir rack sinifi ile uyusuyorsa dizi icerisindeki rack sinifi geri donderiliyor!
+                return _activeRacks;
+            }
+        }
+        Debug.LogError("<color=red>Error!</color> Aranan Rack sinifi bulunamadi!", this.gameObject);
+        return null; // Eger istenilen eleman bulunamzsa bu fonksiyon geriye null degerini donderiyor!
+    }
+
+
+    /// <summary>
+    /// Bu fonksiyon ile birlikte aradiginiz rack sinifinin index numarasini girerseniz aradiginiz sinifi dizi icerisinden bulabilirsiniz!
+    /// </summary>
+    /// <param name="index">Aradiginiz rack sinifinin index numarasini giriniz</param>
+    /// <returns>index numarasi ile eslesen rack sinifi geri donderilecek!</returns>
+    private Rack GetActiveRack(int index)
+    {
+        if (index > this._activeRacks.Length)
+        {
+            Debug.LogError("parametre olarak girilen index numarasi dizinin uzunlugundan fazla oldugu icin hata olustu", this.gameObject);
+            return null;
+        }
+        else if (this._activeRacks[index] == null)
+        {
+            Debug.Log("<color=yellow>Warning</color> Aranan obje bulundu ancak <b>NULL</b>", this.gameObject);
+        }
+        return this._activeRacks[index];
+    }
 
     #endregion <<<< XXX >>>>
 }
