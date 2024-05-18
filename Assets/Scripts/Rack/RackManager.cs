@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 
 public class RackManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class RackManager : MonoBehaviour
 
     [SerializeField] private float spawnDurationSpeed = 3f;
     [SerializeField] private float spawnDurationDecrease = 0.001f;
-    [SerializeField] private byte maxRackValue = 5;
+    [SerializeField] private byte activeMaxRackValue = 5;
 
 
     [Header("Rack Properties")]
@@ -38,9 +39,10 @@ public class RackManager : MonoBehaviour
     #region <<<< Private Fields >>>>
 
     private bool _isAttack = true;
+    private const float _minDistance = 1.0f;
     private Queue<Rack> _racks = new Queue<Rack>();
     private GameObject _racksParentObj;
-
+    private Rack[] _activeRacks;
     #endregion <<<< XXX >>>>
 
 
@@ -68,16 +70,44 @@ public class RackManager : MonoBehaviour
 
     private void Awake()
     {
+        this._activeRacks = new Transform[this.activeMaxRackValue];
         this._racksParentObj = new GameObject("RackParentObject");
         this.CreateRacketObjectPool();
     }
 
 
 
+    private void Start()
+    {
+        this._isAttack = true;
+    }
 
+
+
+
+    private void FixedUpdate()
+    {
+        RackFire();
+    }
+
+
+
+
+
+    /// <summary>
+    /// Bu fonksiyon ile birlikte asteroidinizin hangi pozisyonda spawn olacagini girebilirsiniz!
+    /// </summary>
     private void RackFire()
     {
+        if (this._isAttack)
+        {
+            // ~~ Varaiables ~~
+            Rack _getRack;
 
+            _getRack = GetRack();
+            _getRack.transform.position = GetRackSpawnPosition();
+            StartCoroutine(IsAttackControl());
+        }
     }
 
 
