@@ -70,7 +70,7 @@ public class RackManager : MonoBehaviour
 
     private void Awake()
     {
-        this._activeRacks = new Transform[this.activeMaxRackValue];
+        this._activeRacks = new Rack[this.activeMaxRackValue];
         this._racksParentObj = new GameObject("RackParentObject");
         this.CreateRacketObjectPool();
     }
@@ -160,9 +160,9 @@ public class RackManager : MonoBehaviour
             _spawnPos.x = Random.Range(_randomSpawnPoint.x, _randomSpawnPoint.y);
 
             _xAxisOK = false;
-            foreach (Transform _activeRack in this._activeRacks)
+            foreach (Rack _activeRack in this._activeRacks)
             {
-                _xAxisOK = Vector3.Distance(_activeRack.position, _spawnPos) > _minDistance;
+                _xAxisOK = Vector3.Distance(_activeRack.transform.position, _spawnPos) > _minDistance;
                 if (_xAxisOK == true)
                 {
                     return _spawnPos;
@@ -225,6 +225,7 @@ public class RackManager : MonoBehaviour
         this._racks.Enqueue(rack);
         rack.gameObject.SetActive(false);
         rack.transform.SetParent(this._racksParentObj.transform);
+        RemoveActiveRack(rack);
     }
 
     /// <summary>
@@ -239,6 +240,7 @@ public class RackManager : MonoBehaviour
         _rack = this._racks.Dequeue();
         _rack.gameObject.SetActive(true);
         _rack.transform.SetParent(null);
+        AddToActiveRack(_rack);
         return _rack;
     }
 
@@ -306,5 +308,47 @@ public class RackManager : MonoBehaviour
         return this._activeRacks[index];
     }
 
+
+
+    /// <summary>
+    /// Bu fonksiyon ile birlikte Active Racket dizisi icersinde aradiginiz bir raketin index numarasini cekebilirsiniz!
+    /// </summary>
+    /// <param name="_rack">Aradiginiz raketin index numarasini giriniz!</param>
+    /// <returns>Aradiginiz raket bulunursa index nuamrasi donderilir eger bulunamazsa `-1` degeri geri donderilir!</returns>
+    private int IndexOfGetActiveRack(Rack _rack)
+    {
+        for (int i = 0; i < this._activeRacks.Length; i++)
+        {
+            if (this._activeRacks[i] == _rack)
+            {
+                return i;
+            }
+        }
+
+        Debug.LogError("<color=red>Aranan Active Rack bulunamadi</color>", this.gameObject);
+        return -1;
+    }
+
+
+
+    private void RemoveActiveRack(Rack rack)
+    {
+        this._activeRacks[IndexOfGetActiveRack(rack)] = null;
+    }
+
+
+    private bool AddToActiveRack(Rack rack)
+    {
+        for (int i = 0; i < this._activeRacks.Length; i++)
+        {
+            if (this._activeRacks[i] == null)
+            {
+                this._activeRacks[i] = rack;
+                return true;
+            }
+        }
+        Debug.LogError("<color=red>Error</color> Active Rack dizisi icersiinde istediginiz eleman eklenemedi!", this.gameObject);
+        return false;
+    }
     #endregion <<<< XXX >>>>
 }
