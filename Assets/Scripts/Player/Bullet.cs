@@ -29,12 +29,26 @@ public class Bullet : MonoBehaviour
 
 
 
+    /// <summary>
+    /// Bu constructor ile yeni Bir Bullet Sinifi olusturabilirsiniz!
+    /// </summary>
+    /// <param name="gunController">Yeni bir bullet sinifi olusturmak icin `GunController` sinifini referans olarak verebilirsiniz!</param>
+    public Bullet(GunController gunController)
+    {
+        this.gunController = gunController;
+        this._attack = false;
+    }
+
+
+
 
 
     private void OnEnable()
     {
+        if (this.gunController == null)
+            this.gunController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GunController>() ?? FindObjectOfType<GunController>();
         if (this._attack)
-            StartCoroutine(ReturnToPool());
+            StartCoroutine(this.gunController.ObjectPooling.ReturnToPool(this, this.gunController._returnToPoolDuration));
     }
 
 
@@ -52,17 +66,5 @@ public class Bullet : MonoBehaviour
     private void BulletForward()
     {
         this.transform.Translate(Vector3.forward * this.gunController._bulletSpeed * this.gunController._bulletSpeedMultiply * Time.deltaTime);
-    }
-
-
-
-    /// <summary>
-    /// Bu fonksiyon ile birlikte bu kursunun belirli bir sure sonra obje havuzuna geri donmesini saglayabilirsiniz!
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator ReturnToPool()
-    {
-        yield return new WaitForSeconds(this.gunController._returnToPoolDuration);
-        this.gunController.AddPoolBullet(this);
     }
 }

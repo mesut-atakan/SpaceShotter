@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour
 
     [Header("Object Pool Properties")]
 
-    [SerializeField] private int poolObjectValue = 300;
+    [SerializeField] private int poolSize = 300;
     [SerializeField] private float returnToPoolDuration = 10;
     #endregion <<<< XXX >>>>
 
@@ -52,6 +52,7 @@ public class GunController : MonoBehaviour
     internal float _bulletSpeed => this.bulletSpeed;
     internal float _returnToPoolDuration => this.returnToPoolDuration;
     internal float _bulletSpeedMultiply { get; } = 100;
+    internal ObjectPooling<Bullet> ObjectPooling { get; set; }
 
     #endregion <<<< XXX >>>>
 
@@ -61,8 +62,7 @@ public class GunController : MonoBehaviour
 
     private void Awake()
     {
-        _objectPoolParentObject = new GameObject("ObjectPool");
-        CreatePool();
+        this.ObjectPooling = new ObjectPooling<Bullet>(this.bulletPrefab, this.poolSize, this._objectPoolParentObject);
     }
 
     private void OnEnable()
@@ -96,7 +96,7 @@ public class GunController : MonoBehaviour
         Bullet _fireBullet;
         foreach(Transform _gunTransform in this.Guns)
         {
-            _fireBullet = GetBullet;
+            _fireBullet = this.ObjectPooling.Get();
             _fireBullet.transform.position = _gunTransform.position;
         }
         StartCoroutine(IsFireControl());
@@ -113,64 +113,4 @@ public class GunController : MonoBehaviour
         yield return new WaitForSeconds(this.fireDuration);
         this._isFire = true;
     }
-
-
-
-
-
-
-
-    #region <<<< Bullet Pool >>>>
-
-    /// <summary>
-    /// Bu fonksiyon ile birlikte bir object pool olusturabilirsiniz!
-    /// </summary>
-    private void CreatePool()
-    {
-        // ~~ Variables ~~
-        GameObject _createObject;
-        Bullet _createBullet;
-
-        for (int i = 0; i < this.poolObjectValue; i++)
-        {
-            _createObject = Instantiate(this.bulletPrefab);
-            _createObject.TryGetComponent(out _createBullet);
-            AddPoolBullet(_createBullet);
-
-            if (_createBullet.gunController == null)
-                _createBullet.gunController = this;
-        }
-    }
-
-
-    /// <summary>
-    /// Bu fonksiyon ile Object pool icerisine bir bullet ekleyebilirsiniz!
-    /// </summary>
-    /// <param name="bullet">Eklemek istediginiz bullet objesini giriniz!</param>
-    public void AddPoolBullet(Bullet bullet)
-    {
-        this._bulletPool.Enqueue(bullet);
-        bullet.gameObject.SetActive(false);
-        bullet.transform.SetParent(this._objectPoolParentObject.transform);
-    }
-
-
-    /// <summary>
-    /// Bu fonksiyon ile object pool icerisndeki siradaki objeyi cekebilirsiniz!
-    /// </summary>
-    /// <returns>Object pool icerisinden cekilen obje geri donderilecek!</returns>
-    private Bullet GetBullet
-    {
-        get
-        {
-            Bullet _getBullet;
-
-            _getBullet = this._bulletPool.Dequeue();
-            _getBullet.transform.SetParent(null);
-            _getBullet.gameObject.SetActive(true);
-            return _getBullet;
-        }
-    }
-
-    #endregion <<<< XXX >>>>
 }
