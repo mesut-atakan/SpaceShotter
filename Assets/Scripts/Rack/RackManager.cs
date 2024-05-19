@@ -41,7 +41,7 @@ public class RackManager : MonoBehaviour
     #region <<<< Properties >>>>
 
     internal float asteroidSpeedMultiply { get; } = 40;
-    internal float _speedDeflection { get; } = 2;
+    internal float _speedDeflection { get; } = 3;
     internal float _asteroidSpeed => this.asteroidSpeed;
 
     #endregion <<<< XXX >>>>

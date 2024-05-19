@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IInteractable
 {
     #region <<<< Serialize Fields >>>>
 
@@ -66,5 +66,15 @@ public class Bullet : MonoBehaviour
     private void BulletForward()
     {
         this.transform.Translate(Vector3.forward * this.gunController._bulletSpeed * this.gunController._bulletSpeedMultiply * Time.deltaTime);
+    }
+
+    public void Interaction()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnHit()
+    {
+        throw new System.NotImplementedException();
     }
 }

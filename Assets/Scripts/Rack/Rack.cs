@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 
-public class Rack : MonoBehaviour
+public class Rack : MonoBehaviour, IInteractable
 {
     #region <<<< Serialize Fields >>>>
 
@@ -59,5 +59,15 @@ public class Rack : MonoBehaviour
     private void Move()
     {
         this.transform.Translate(-Vector3.forward * _speed);
+    }
+
+    public void Interaction()
+    {
+        
+    }
+
+    public void OnHit()
+    {
+        
     }
 }
