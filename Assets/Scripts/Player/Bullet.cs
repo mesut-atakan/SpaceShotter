@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-public class Bullet : MonoBehaviour, IInteractable
+public class Bullet : MonoBehaviour, IInteraction
 {
     #region <<<< Serialize Fields >>>>
 
@@ -60,6 +60,14 @@ public class Bullet : MonoBehaviour, IInteractable
 
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<IInteraction>(out IInteraction _interaction))
+            _interaction.TakeDamage();
+    }
+
+
+
     /// <summary>
     /// Bu fonksiyon ile birlikte kurþunlarýnýzýn daime ileri gitmesini saðlarsýnýz!
     /// </summary>
@@ -68,13 +76,19 @@ public class Bullet : MonoBehaviour, IInteractable
         this.transform.Translate(Vector3.forward * this.gunController._bulletSpeed * this.gunController._bulletSpeedMultiply * Time.deltaTime);
     }
 
-    public void Interaction()
+
+
+
+    // ~~ Interface ~~
+
+    public void TakeDamage()
     {
-        throw new System.NotImplementedException();
+        this.gunController.ObjectPooling.ReturnToPool(this);
+        Debug.Log("Return Pool <b>Bullet</b>");
     }
 
-    public void OnHit()
+    public void Damage(Collider other)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

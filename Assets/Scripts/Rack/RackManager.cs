@@ -28,7 +28,6 @@ public class RackManager : MonoBehaviour
 
     #region <<<< Private Fields >>>>
 
-    private ObjectPooling<Rack> objectPooling;
     private bool _isSpawner = true;
     [SerializeField] private List<Rack> _activeRacks = new List<Rack>();
 
@@ -40,6 +39,7 @@ public class RackManager : MonoBehaviour
 
     #region <<<< Properties >>>>
 
+    internal ObjectPooling<Rack> ObjectPooling { get; set; }
     internal float asteroidSpeedMultiply { get; } = 40;
     internal float _speedDeflection { get; } = 3;
     internal float _asteroidSpeed => this.asteroidSpeed;
@@ -54,7 +54,7 @@ public class RackManager : MonoBehaviour
 
     private void Awake()
     {
-        this.objectPooling = new ObjectPooling<Rack>(this.objectPrefab, this.poolSize);
+        this.ObjectPooling = new ObjectPooling<Rack>(this.objectPrefab, this.poolSize);
     }
 
 
@@ -69,6 +69,22 @@ public class RackManager : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(new Vector3(-100, 0, this.zAxis), new Vector3(100, 0, zAxis));
     }
+
+
+
+
+
+
+
+    public void RemoveActiveRack(Rack _rack)
+    {
+        if (this._activeRacks.Contains(_rack))
+            this._activeRacks.Remove(_rack);
+    }
+
+
+
+
 
 
 
@@ -96,7 +112,7 @@ public class RackManager : MonoBehaviour
 
         for (int i = 0; i < this.spawnMaxObject; i++)
         {
-            _createRack = this.objectPooling.Get();
+            _createRack = this.ObjectPooling.Get();
             AddActiveRack(_createRack);
             _createRack.transform.position = GetPosition();
         }

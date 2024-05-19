@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 
-public class Rack : MonoBehaviour, IInteractable
+public class Rack : MonoBehaviour, IInteraction
 {
     #region <<<< Serialize Fields >>>>
 
@@ -52,6 +52,13 @@ public class Rack : MonoBehaviour, IInteractable
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<IInteraction>(out IInteraction _interaction))
+            _interaction.TakeDamage();
+    }
+
+
 
     /// <summary>
     /// Bu fonksiyon ile Asteroidin haraket etmesini saglayabilirsiniz!
@@ -61,13 +68,14 @@ public class Rack : MonoBehaviour, IInteractable
         this.transform.Translate(-Vector3.forward * _speed);
     }
 
-    public void Interaction()
+    public void Damage(Collider other)
     {
-        
     }
 
-    public void OnHit()
+    public void TakeDamage()
     {
-        
+        this._rackManager.ObjectPooling.ReturnToPool(this);
+        this._rackManager.RemoveActiveRack(this);
+        Debug.Log("Return Pool <b>Rack</b>");
     }
 }

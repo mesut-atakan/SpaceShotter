@@ -2,14 +2,14 @@ using UnityEngine;
 
 
 
-public class CollisionController : MonoBehaviour, IInteractable
+public class CollisionController : MonoBehaviour, IInteraction
 {
-    public void Interaction()
+    public void Damage(Collider other)
     {
         
     }
 
-    public void OnHit()
+    public void TakeDamage()
     {
         
     }

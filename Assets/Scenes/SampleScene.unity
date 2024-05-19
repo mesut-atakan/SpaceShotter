@@ -1322,7 +1322,7 @@ MonoBehaviour:
   - {fileID: 7642089964585371861, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
   - {fileID: 2194794745080136896, guid: c0e82ab38938b0a4ab35f65d8981ac0f, type: 3}
   spawnDuration: 3.3
-  asteroidSpeed: 1.06
+  asteroidSpeed: 0.75
   spawnMaxObject: 4
   spawnObjectClamp: {x: -22, y: 22}
   zAxis: 41.02
