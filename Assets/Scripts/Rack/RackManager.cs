@@ -40,7 +40,9 @@ public class RackManager : MonoBehaviour
 
     #region <<<< Properties >>>>
 
-    internal const float asteroidSpeedMultiply = 100;
+    internal float asteroidSpeedMultiply { get; } = 40;
+    internal float _speedDeflection { get; } = 2;
+    internal float _asteroidSpeed => this.asteroidSpeed;
 
     #endregion <<<< XXX >>>>
 
@@ -78,6 +80,7 @@ public class RackManager : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(this.spawnDuration);
+            this._activeRacks.Clear();
             Spawner();
 
         }
@@ -136,6 +139,7 @@ public class RackManager : MonoBehaviour
         float _distance;
         bool _isPos = true;
         int _testValue = 0;
+        int _maxTest = this.spawnMaxObject * 30;
 
 
         _pos = Vector3.zero;
@@ -160,10 +164,9 @@ public class RackManager : MonoBehaviour
             }
             if (_isPos)
                 return _pos;
-        } while (_testValue < 10000);
+        } while (_testValue < _maxTest);
 
         Debug.LogError("<color=red>Error</color> Uygun Konum bulunamadi!", this.gameObject);
         return Vector3.zero;
     }
-    
 }
