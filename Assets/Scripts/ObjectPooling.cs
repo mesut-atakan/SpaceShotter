@@ -10,7 +10,7 @@ public class ObjectPooling<T> where T : Component
 
     private Queue<T> objects = new Queue<T>();
     private T objPool;
-    private GameObject objectPrefab;
+    private GameObject[] objectPrefab;
 
 
 
@@ -24,6 +24,9 @@ public class ObjectPooling<T> where T : Component
 
     internal Transform parentTransform { get; set; }
 
+
+    private int GetRandomIndex => Random.Range(0, this.objectPrefab.Length);
+
     #endregion <<<< XXX >>>>
 
 
@@ -32,26 +35,20 @@ public class ObjectPooling<T> where T : Component
 
     public ObjectPooling(GameObject objectPrefab, int initialSize, GameObject parentTransform = null)
     {
+        this.objectPrefab = new GameObject[1];
+        this.objectPrefab[0] = objectPrefab;
+
+        CreatePool(initialSize, parentTransform);
+    }
+    
+
+
+    public ObjectPooling(GameObject[] objectPrefabs, int initialSize, GameObject parentTransform = null)
+    {
         // ~~ Variables ~~
-        T _obj;
-        GameObject _createObject;
+        this.objectPrefab = objectPrefabs;
 
-        this.objectPrefab = objectPrefab;
-        if (parentTransform == null)
-            this.parentTransform = new GameObject("parentObject").transform;
-        
-        for (int i = 0; i < initialSize; i++)
-        {
-            _createObject = GameObject.Instantiate(objectPrefab);
-            _createObject.TryGetComponent<T>(out _obj);
-
-            if (_obj == null)
-            {
-                Debug.LogError($"<color=red>Error</color> Olusturulan objenin icerisinde <T> turunde bir component bulunamadi! {_createObject.name}", _createObject);
-                return;
-            }
-            ReturnToPool(_obj);
-        }
+        CreatePool(initialSize, parentTransform);
     }
 
 
@@ -76,7 +73,7 @@ public class ObjectPooling<T> where T : Component
         else
         {
             Debug.LogWarning($"<color=yellow>Warning</color> Objets dizisinde herhangi bir obje yok ancak sifirdan bir obje olusuturuluyor!");
-            _createObject = GameObject.Instantiate(this.objectPrefab);
+            _createObject = GameObject.Instantiate(this.objectPrefab[Random.Range(0, this.objectPrefab.Length)]);
             _createObject.TryGetComponent<T>(out _obj);
 
             if (_obj == null)
@@ -114,5 +111,43 @@ public class ObjectPooling<T> where T : Component
     {
         yield return new WaitForSeconds(duration);
         ReturnToPool(obj);
+    }
+
+
+
+
+    
+
+
+    private void CreatePool(int initialSize, GameObject parentObject)
+    {
+        // ~~ Variables ~~
+        GameObject _createObject;
+        int _index;
+        bool _isArray;
+        T _obj;
+
+        if (parentObject == null)
+            this.parentTransform = new GameObject("ParentObjects").transform;
+
+        _index = 0;
+        if (this.objectPrefab.Length > 1) _isArray = true;
+        else _isArray = false;
+
+        for (int i = 0; i < initialSize; i++)
+        {
+            if (_isArray)
+                _index = GetRandomIndex;
+
+            _createObject = GameObject.Instantiate(this.objectPrefab[_index]);
+            _createObject.TryGetComponent<T>(out _obj);
+
+            if (_obj == null)
+            {
+                Debug.LogError($"<color=red>Error</color> Olusturulan objenin icerisinde <T> turunde bir component bulunamadi! {_createObject.name}", _createObject);
+                return;
+            }
+            ReturnToPool(_obj);
+        }
     }
 }
