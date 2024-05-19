@@ -1,6 +1,6 @@
 # 🚀 Space Shooter Oyun Geliştirme Projesi
 
-![Space Shooter](header_image.png)
+![Space Shooter](spaceShotterBanner.jpg)
 
 En son projem olan dinamik ve ilgi çekici bir top-down space shooter oyununu sizlerle paylaşmaktan büyük heyecan duyuyorum. Bu proje, oyun geliştirme ve performans optimizasyonu yeteneklerimi sergiliyor.
 
