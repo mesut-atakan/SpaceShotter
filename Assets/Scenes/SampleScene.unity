@@ -1321,26 +1321,13 @@ MonoBehaviour:
   - {fileID: 3606340279829517473, guid: 46e7653dfbf77b247bc855c46bbd4f4e, type: 3}
   - {fileID: 7642089964585371861, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
   - {fileID: 2194794745080136896, guid: c0e82ab38938b0a4ab35f65d8981ac0f, type: 3}
-  - {fileID: 7273956540791742907, guid: 9cb5e7465eef1af4988889e41a071493, type: 3}
-  - {fileID: 6516070941938034013, guid: 8a0d737915eae7a4e8c4176987503064, type: 3}
-  - {fileID: 523533613071711390, guid: 0ebf9f1968066d74e9a9f74696085d52, type: 3}
-  - {fileID: 3838665524093264010, guid: 9b4e5fd1d3dc2424fb4276ce71f932ab, type: 3}
-  - {fileID: 1145542162625858076, guid: 3c8215a2e7ab319429b4a5a281da827e, type: 3}
-  - {fileID: 5850001623458330267, guid: a024271adb4d00a43904106a318d260c, type: 3}
-  - {fileID: 1342456525053472956, guid: 3411c56d2afd5af4a8df22b06f9551e3, type: 3}
-  - {fileID: 4431163409800634606, guid: 0ff42f37aee0fec44bcd79763ae4f92f, type: 3}
-  - {fileID: 7139729654043156525, guid: c03bd4a9c21eff74a8771f8e0d70e711, type: 3}
-  - {fileID: 8045309804241059600, guid: a680ad859bd92a345b6ae6b11c6a4301, type: 3}
-  - {fileID: 6659000685879201544, guid: 858bcc836e2a98d44ab962addfd772ff, type: 3}
-  - {fileID: 4737196167981967199, guid: 16165ff48390af44f993e05c19bac115, type: 3}
-  - {fileID: 3227188554907173655, guid: b66485824d4da074ca57921ca152d924, type: 3}
-  - {fileID: 1237976945563109718, guid: a833525238ff43641adecba6d1e74821, type: 3}
-  - {fileID: 8842431829488770805, guid: 0df7f3e030f1da24a9abe74e81197585, type: 3}
   spawnDuration: 3.3
   asteroidSpeed: 3
-  spawnMaxObject: 4
-  spawnObjectClamp: {x: -4, y: 4}
+  spawnMaxObject: 7
+  spawnObjectClamp: {x: -22, y: 22}
+  zAxis: 41.02
   poolSize: 50
+  _activeRacks: []
 --- !u!1 &1121455033
 GameObject:
   m_ObjectHideFlags: 0
