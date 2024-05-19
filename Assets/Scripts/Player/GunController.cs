@@ -40,7 +40,6 @@ public class GunController : MonoBehaviour
     private bool _isFire = true;
 
     private GameObject _objectPoolParentObject;
-    private Queue<Bullet> _bulletPool = new Queue<Bullet>();
 
     #endregion <<<< XXX >>>>
 
@@ -62,7 +61,7 @@ public class GunController : MonoBehaviour
 
     private void Awake()
     {
-        this.ObjectPooling = new ObjectPooling<Bullet>(this.bulletPrefab, this.poolSize, this._objectPoolParentObject);
+        this.ObjectPooling = new ObjectPooling<Bullet>(this.bulletPrefab, this.poolSize);
     }
 
     private void OnEnable()

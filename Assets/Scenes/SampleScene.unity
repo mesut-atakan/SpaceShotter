@@ -1305,12 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea61e6a7af130364592868be581bcedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomSpawnPoint: {x: 0, y: 0}
-  spawnerZAxis: 0
-  spawnDurationSpeed: 3
-  spawnDurationDecrease: 0.001
-  maxRackValue: 5
-  RackObjects:
+  objectPrefab:
   - {fileID: 7437889339238721774, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
   - {fileID: 2746130058158584518, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
   - {fileID: 1797448692007430590, guid: 579e809d2465e864795196e5b0545d73, type: 3}
@@ -1341,8 +1336,11 @@ MonoBehaviour:
   - {fileID: 3227188554907173655, guid: b66485824d4da074ca57921ca152d924, type: 3}
   - {fileID: 1237976945563109718, guid: a833525238ff43641adecba6d1e74821, type: 3}
   - {fileID: 8842431829488770805, guid: 0df7f3e030f1da24a9abe74e81197585, type: 3}
-  rackSpeed: 2.5
-  maxObjectValue: 30
+  spawnDuration: 3.3
+  asteroidSpeed: 3
+  spawnMaxObject: 4
+  spawnObjectClamp: {x: -4, y: 4}
+  poolSize: 50
 --- !u!1 &1121455033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1453,7 @@ MonoBehaviour:
   - {fileID: 1818070379}
   - {fileID: 1585092782}
   - {fileID: 582674408}
-  poolObjectValue: 300
+  poolSize: 300
   returnToPoolDuration: 10
 --- !u!4 &1296545794 stripped
 Transform:
