@@ -62,7 +62,7 @@ public class Bullet : MonoBehaviour, IInteraction
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<IInteraction>(out IInteraction _interaction))
+        if (other.TryGetComponent<IInteraction>(out IInteraction _interaction) && !(_interaction as Bullet))
             _interaction.TakeDamage();
     }
 
