@@ -44,22 +44,9 @@ Bu proje, oyuncunun uzay gemisi ile düşman gemileri ve asteroidlerle savaşmas
    - **Event Sistemi**: Oyun başladığında, kazanıldığında ve kaybedildiğinde gerekli işlemleri yapacak event sistemi kurdum. Bu sistem, oyun akışını ve kullanıcı etkileşimlerini yönetmek için kullanıldı.
    - **UI Manager**: Oyuncunun sağlık durumu, puanı ve diğer önemli bilgileri göstermek için bir kullanıcı arayüzü yöneticisi geliştirdim.
 
-### 📂 Proje Yapısı
+# Kullanılan Assetler
 
-```plaintext
-Assets/
-├── Scripts/
-│   ├── Character.cs
-│   ├── Player.cs
-│   ├── Enemy.cs
-│   ├── Bullet.cs
-│   ├── ObjectPooling.cs
-│   ├── GameManager.cs
-│   └── UIManager.cs
-├── Prefabs/
-│   ├── Player.prefab
-│   ├── Enemy.prefab
-│   ├── Bullet.prefab
-│   └── Asteroid.prefab
-└── Scenes/
-    └── MainScene.unity
+
+https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676
+
+https://assetstore.unity.com/packages/3d/props/breakable-asteroids-167825
