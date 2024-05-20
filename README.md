@@ -47,6 +47,8 @@ Bu proje, oyuncunun uzay gemisi ile düşman gemileri ve asteroidlerle savaşmas
 # Kullanılan Assetler
 
 
-![doTween.jpg](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
+## [Do Tween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
+![Asset Image](doTween.jpg)
 
-https://assetstore.unity.com/packages/3d/props/breakable-asteroids-167825
+## [Breakable Asteroids](https://assetstore.unity.com/packages/3d/props/breakable-asteroids-167825)
+![Asset Image](BreakableAsteroid.jpg)
