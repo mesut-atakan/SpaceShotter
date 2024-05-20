@@ -76,6 +76,6 @@ public class Rack : MonoBehaviour, IInteraction
     {
         this._rackManager.ObjectPooling.ReturnToPool(this);
         this._rackManager.RemoveActiveRack(this);
-        Debug.Log("Return Pool <b>Rack</b>");
+        // Debug.Log("Return Pool <b>Rack</b>");
     }
 }
