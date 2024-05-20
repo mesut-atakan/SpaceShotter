@@ -68,10 +68,13 @@ public class Bullet : MonoBehaviour, IInteraction
             if (_interaction is Bullet bullet && this._isPlayer != bullet._isPlayer)
             {
                 _interaction.TakeDamage();
+                
             }
             else if (!(_interaction as Bullet))
             {
                 _interaction.TakeDamage();
+                this.gunController._gameManager._scoreCalculator.IncreaseScore(Camera.main.ScreenToViewportPoint(this.transform.position), 2, 1);
+                this.gunController.ObjectPooling.ReturnToPool(this);
             }
         }
     }
@@ -94,7 +97,7 @@ public class Bullet : MonoBehaviour, IInteraction
     public void TakeDamage()
     {
         this.gunController.ObjectPooling.ReturnToPool(this);
-        Debug.Log("Return Pool <b>Bullet</b>");
+        // Debug.Log("Return Pool <b>Bullet</b>");
     }
 
     public void Damage(Collider other)

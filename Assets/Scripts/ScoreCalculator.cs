@@ -3,17 +3,34 @@ using DG.Tweening;
 using UnityEditor;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 
 internal class ScoreCalculator : MonoBehaviour
 {
+    #region <<<< Serialize Fields >>>>
+
+    [Header("UI Score")]
     [SerializeField] private Transform scoreBarParrent;
     [SerializeField] private Transform scoreBar;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Image scoreIncreaseImage;
     [SerializeField] private float scoreBarIncreaseAmount;
 
+    [Header("3d Score")]
 
+    [SerializeField] private TextMeshPro interactionScoreText;
+    [SerializeField] private Vector2 distance;
+
+    #endregion <<<< XXX >>>>
+
+
+
+    #region <<<< Private Fields >>>>
+
+    Tween _shakeAnim, _textPunchAnim, _textRotateShakeAnim, _scoreIncreaseImageMoveAnim, _imageColorAnim;
+    #endregion <<<< XXX >>>>
 
 
 
@@ -26,20 +43,63 @@ internal class ScoreCalculator : MonoBehaviour
     private void Awake()
     {
         currentScoreAmount = 0;
-        //ScoreIncrease();
+        StartCoroutine(InteractionScoreText(Vector3.zero, 2, 1));
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-            ScoreIncrease();
+    }
+
+
+    public void IncreaseScore(Vector3 position, float damageAmount, float duration)
+    {
+        StartCoroutine(InteractionScoreText(this.transform.position, 2f, 0.7f));
+        ScoreIncrease();
+    }
+
+
+
+    /// <summary>
+    /// Bu fonksiyon ile karakteriniz bir skor kazandýðýnda skor hangi konumdan kazanýldýysa bu text o konuma gider ve kazanýlan skoru gösterir.
+    /// </summary>
+    /// <param name="position">Skor textinin gözükmesini istediðiniz pozisyonu giriniz!</param>
+    /// <param name="damageAmount">Verilen hasarý veya kazanýlan skoru giriniz</param>
+    /// <param name="duration">Efektin ne kadar süre sahnede kalmasý gerektiðini giriniz!</param>
+    public IEnumerator InteractionScoreText(Vector3 position, float damageAmount, float duration)
+    {
+        // Variables
+        Vector3 _textPosition;
+        Sequence _interactionScoreTextAnimation;
+        
+        this.interactionScoreText.gameObject.SetActive(true); 
+        _interactionScoreTextAnimation = DOTween.Sequence();
+        _textPosition = position;
+        _textPosition.x += this.distance.x;
+        _textPosition.y += this.distance.y;
+        _textPosition.z = 0;
+
+        this.interactionScoreText.color = Color.white;
+        this.interactionScoreText.transform.position = _textPosition;
+        this.interactionScoreText.text = $"+{damageAmount.ToString()}x";
+
+        yield return new WaitForSeconds(duration);
+        Debug.Log("Deneme");
+
+        _interactionScoreTextAnimation.Append(this.interactionScoreText.transform.DOMoveY(_textPosition.y + 5, 0.75f));
+        _interactionScoreTextAnimation.Join(this.interactionScoreText.transform.DOPunchScale(-Vector3.one, 1f));
+        _interactionScoreTextAnimation.Join(this.interactionScoreText.DOColor(new Color(1, 1, 1, 0), 1f));
+        _interactionScoreTextAnimation.OnKill(() =>
+        {
+            this.interactionScoreText.gameObject.SetActive(false);
+            this.interactionScoreText.transform.localScale = Vector3.one;
+        });
     }
 
 
 
 
-        Tween _shakeAnim, _textPunchAnim, _textRotateShakeAnim, _scoreIncreaseImageMoveAnim, _imageColorAnim;
-    private void ScoreIncrease()
+
+    public void ScoreIncrease()
     {
         this.currentScoreAmount += this.scoreBarIncreaseAmount;
         this.scoreBar.transform.localScale = new Vector2(this.currentScoreAmount, this.scoreBar.localScale.y);
