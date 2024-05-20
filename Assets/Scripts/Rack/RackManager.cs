@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 
 
@@ -54,7 +55,9 @@ public class RackManager : MonoBehaviour
 
     private void Awake()
     {
+        Profiler.BeginSample("Object Pooling Create Rack");
         this.ObjectPooling = new ObjectPooling<Rack>(this.objectPrefab, this.poolSize);
+        Profiler.EndSample();
     }
 
 
@@ -112,9 +115,13 @@ public class RackManager : MonoBehaviour
 
         for (int i = 0; i < this.spawnMaxObject; i++)
         {
-            _createRack = this.ObjectPooling.Get();
-            AddActiveRack(_createRack);
-            _createRack.transform.position = GetPosition();
+            _createRack = this.ObjectPooling.Get(_createRack =>
+            {
+                _createRack.gameObject.SetActive(true);
+                _createRack.transform.SetParent(null);
+                AddActiveRack(_createRack);
+                _createRack.transform.position = GetPosition();
+            });
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 
 
@@ -29,6 +30,11 @@ public class GunController : MonoBehaviour
 
     [SerializeField] private int poolSize = 300;
     [SerializeField] private float returnToPoolDuration = 10;
+
+
+    [Header("Classes")]
+
+    [SerializeField] private GameManager gameManager;
     #endregion <<<< XXX >>>>
 
 
@@ -52,6 +58,7 @@ public class GunController : MonoBehaviour
     internal float _returnToPoolDuration => this.returnToPoolDuration;
     internal float _bulletSpeedMultiply { get; } = 100;
     internal ObjectPooling<Bullet> ObjectPooling { get; set; }
+    internal GameManager _gameManager { get => this.gameManager; set => this.gameManager = value; }
 
     #endregion <<<< XXX >>>>
 
@@ -61,7 +68,13 @@ public class GunController : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        Profiler.BeginSample("Create Object Pool");
+#endif
         this.ObjectPooling = new ObjectPooling<Bullet>(this.bulletPrefab, this.poolSize);
+#if UNITY_EDITOR
+        Profiler.EndSample();
+#endif
     }
 
     private void OnEnable()
@@ -95,7 +108,12 @@ public class GunController : MonoBehaviour
         Bullet _fireBullet;
         foreach(Transform _gunTransform in this.Guns)
         {
-            _fireBullet = this.ObjectPooling.Get();
+            _fireBullet = this.ObjectPooling.Get(_fireBullet =>
+            {
+                _fireBullet._attack = true;
+                _fireBullet.transform.SetParent(null);
+                _fireBullet.gameObject.SetActive(true);
+            });
             _fireBullet.transform.position = _gunTransform.position;
         }
         StartCoroutine(IsFireControl());

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 
 
@@ -25,7 +27,7 @@ public class ObjectPooling<T> where T : Component
     internal Transform parentTransform { get; set; }
 
 
-    private int GetRandomIndex => Random.Range(0, this.objectPrefab.Length);
+    private int GetRandomIndex => UnityEngine.Random.Range(0, this.objectPrefab.Length);
 
     #endregion <<<< XXX >>>>
 
@@ -35,10 +37,12 @@ public class ObjectPooling<T> where T : Component
 
     public ObjectPooling(GameObject objectPrefab, int initialSize, GameObject parentTransform = null)
     {
+        
         this.objectPrefab = new GameObject[1];
         this.objectPrefab[0] = objectPrefab;
 
         CreatePool(initialSize, parentTransform);
+        
     }
     
 
@@ -60,8 +64,9 @@ public class ObjectPooling<T> where T : Component
     /// Cekilen objenin setActive acilacak ve parenti null olacaktir!
     /// </summary>
     /// <returns>Object pool icerisinden cekilen obje geri donderilecektir!</returns>
-    public T Get()
+    public T Get(Action<T> OnComplate = null)
     {
+        Profiler.BeginSample("Object Pooling GET");
         // ~~ Variables ~~
         T _obj;
         GameObject _createObject;
@@ -73,7 +78,7 @@ public class ObjectPooling<T> where T : Component
         else
         {
             Debug.LogWarning($"<color=yellow>Warning</color> Objets dizisinde herhangi bir obje yok ancak sifirdan bir obje olusuturuluyor!");
-            _createObject = GameObject.Instantiate(this.objectPrefab[Random.Range(0, this.objectPrefab.Length)]);
+            _createObject = GameObject.Instantiate(this.objectPrefab[UnityEngine.Random.Range(0, this.objectPrefab.Length)]);
             _createObject.TryGetComponent<T>(out _obj);
 
             if (_obj == null)
@@ -83,8 +88,12 @@ public class ObjectPooling<T> where T : Component
             }
         }
 
+        OnComplate?.Invoke(_obj);
+        /*
         _obj.transform.SetParent(null);
         _obj.gameObject.SetActive(true);
+        */
+        Profiler.EndSample();
         return _obj;
     }
 
