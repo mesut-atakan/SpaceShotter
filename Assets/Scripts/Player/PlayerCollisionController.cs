@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 
-public class CollisionController : MonoBehaviour, IInteraction
+public class PlayerCollisionController : MonoBehaviour, IInteraction
 {
     public void Damage(Collider other)
     {
