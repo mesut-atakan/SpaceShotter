@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour, IInteraction
     #region <<<< Properties >>>>
 
     internal bool _attack = false;
+    internal bool _isPlayer = false;
 
     #endregion <<<< XXX >>>>
 
@@ -62,8 +63,17 @@ public class Bullet : MonoBehaviour, IInteraction
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<IInteraction>(out IInteraction _interaction) && !(_interaction as Bullet))
-            _interaction.TakeDamage();
+        if (other.TryGetComponent<IInteraction>(out IInteraction _interaction))
+        {
+            if (_interaction is Bullet bullet && this._isPlayer != bullet._isPlayer)
+            {
+                _interaction.TakeDamage();
+            }
+            else if (!(_interaction as Bullet))
+            {
+                _interaction.TakeDamage();
+            }
+        }
     }
 
 
