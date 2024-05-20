@@ -47,6 +47,9 @@ Bu proje, oyuncunun uzay gemisi ile düşman gemileri ve asteroidlerle savaşmas
 # Kullanılan Assetler
 
 
+## [Spaceships](https://assetstore.unity.com/packages/3d/vehicles/space/hi-rez-spaceships-creator-free-sample-153363)
+![Asset Image](spaceship.jpg)
+
 ## [Do Tween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
 ![Asset Image](doTween.jpg)
 
