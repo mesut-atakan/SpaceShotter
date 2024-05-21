@@ -21,6 +21,7 @@ public class Rack : MonoBehaviour, IInteraction
     #region <<<< Properties >>>>
 
     internal RackManager _rackManager { get; set; }
+    internal bool _isActive { get; set; }
 
     #endregion <<<< XXX >>>>
 
@@ -37,10 +38,22 @@ public class Rack : MonoBehaviour, IInteraction
 
     private void OnEnable()
     {
-        float _deflection = Random.Range(1, this._rackManager._speedDeflection);
+        if (this._isActive)
+        {
+            StartCoroutine(this._rackManager.ObjectPooling.ReturnToPool(this, this._rackManager.GetReturnToPoolDuration));
 
-        this._speed = this._rackManager._asteroidSpeed * this._rackManager.asteroidSpeedMultiply * _deflection * Time.deltaTime;
-        this._speed = Mathf.Abs(this._speed);
+            float _deflection = Random.Range(1, this._rackManager._speedDeflection);
+
+            this._speed = this._rackManager._asteroidSpeed * this._rackManager.asteroidSpeedMultiply * _deflection * Time.deltaTime;
+            this._speed = Mathf.Abs(this._speed);
+
+        }
+    }
+
+
+    private void OnDisable()
+    {
+        this._isActive = false;
     }
 
 

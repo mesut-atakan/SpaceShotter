@@ -73,7 +73,7 @@ public class Bullet : MonoBehaviour, IInteraction
             else if (!(_interaction as Bullet))
             {
                 _interaction.TakeDamage();
-                this.gunController._gameManager._scoreCalculator.IncreaseScore(Camera.main.ScreenToViewportPoint(this.transform.position), 2, 1);
+                this.gunController._gameManager._scoreCalculator?.IncreaseScore(Camera.main.ScreenToViewportPoint(this.transform.position), 2, 1);
                 this.gunController.ObjectPooling.ReturnToPool(this);
             }
         }

@@ -20,7 +20,9 @@ public class RackManager : MonoBehaviour
 
 
     [Header("Object Pool Properties")]
+    
     [SerializeField] private int poolSize = 50;
+    [SerializeField] private float returnToPoolDuration = 5.0f;
     #endregion <<<< XXX >>>>
 
 
@@ -44,6 +46,7 @@ public class RackManager : MonoBehaviour
     internal float asteroidSpeedMultiply { get; } = 40;
     internal float _speedDeflection { get; } = 3;
     internal float _asteroidSpeed => this.asteroidSpeed;
+    internal float GetReturnToPoolDuration => this.returnToPoolDuration;
 
     #endregion <<<< XXX >>>>
 
@@ -59,7 +62,6 @@ public class RackManager : MonoBehaviour
         this.ObjectPooling = new ObjectPooling<Rack>(this.objectPrefab, this.poolSize);
         Profiler.EndSample();
     }
-
 
     private void Start()
     {
@@ -117,6 +119,7 @@ public class RackManager : MonoBehaviour
         {
             _createRack = this.ObjectPooling.Get(_createRack =>
             {
+                _createRack._isActive = true;
                 _createRack.gameObject.SetActive(true);
                 _createRack.transform.SetParent(null);
                 AddActiveRack(_createRack);

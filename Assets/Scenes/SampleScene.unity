@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 205945723}
   - component: {fileID: 205945722}
   - component: {fileID: 205945721}
-  - component: {fileID: 205945724}
+  - component: {fileID: 205945725}
   m_Layer: 0
   m_Name: ScriptManager
   m_TagString: GameController
@@ -278,7 +278,7 @@ Transform:
   - {fileID: 1057544698}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &205945724
+--- !u!114 &205945725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,14 +287,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 205945720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd6ed77e8c0ae44fb16b3e3319ca8f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d2243c21856cae4fa4e2c1e8926fb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreBarParrent: {fileID: 1121455034}
-  scoreBar: {fileID: 1559336614}
-  scoreText: {fileID: 1464793870}
-  scoreIncreaseImage: {fileID: 1581363521}
-  scoreBarIncreaseAmount: 0.02
+  gunController: {fileID: 1234113229}
+  scoreCalculator: {fileID: 0}
 --- !u!1001 &250448773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1327,6 +1324,7 @@ MonoBehaviour:
   spawnObjectClamp: {x: -22, y: 22}
   zAxis: 41.02
   poolSize: 50
+  returnToPoolDuration: 5
   _activeRacks: []
 --- !u!1 &1121455033
 GameObject:
@@ -1442,6 +1440,7 @@ MonoBehaviour:
   - {fileID: 582674408}
   poolSize: 300
   returnToPoolDuration: 10
+  gameManager: {fileID: 205945725}
 --- !u!4 &1296545794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1242792315523950639, guid: 2dd421233b21bfb47aac86017eaa5283,

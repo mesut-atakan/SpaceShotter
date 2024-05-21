@@ -43,7 +43,13 @@ internal class ScoreCalculator : MonoBehaviour
     private void Awake()
     {
         currentScoreAmount = 0;
+    }
+
+
+    private void OnEnable()
+    {
         StartCoroutine(InteractionScoreText(Vector3.zero, 2, 1));
+        
     }
 
     private void Update()
