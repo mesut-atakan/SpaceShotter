@@ -16591,6 +16591,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSmooth: 0.5
   target: {fileID: 1234113228}
+  dochMechanic: 1
+  centerPosition: {x: 0, y: 0, z: -15.65}
+  trigerScale: {x: 10.19, y: 5.74, z: 3.74}
 --- !u!1 &1866806146
 GameObject:
   m_ObjectHideFlags: 0
