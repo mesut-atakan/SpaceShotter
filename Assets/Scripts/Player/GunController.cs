@@ -56,7 +56,7 @@ public class GunController : MonoBehaviour
 
     internal float _bulletSpeed => this.bulletSpeed;
     internal float _returnToPoolDuration => this.returnToPoolDuration;
-    internal float _bulletSpeedMultiply { get; } = 100;
+    internal float _bulletSpeedMultiply { get; } = 30;
     internal ObjectPooling<Bullet> ObjectPooling { get; set; }
     internal GameManager _gameManager { get => this.gameManager; set => this.gameManager = value; }
 
