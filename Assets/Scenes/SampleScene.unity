@@ -6347,17 +6347,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e81e4bc3b3382f43b36c0c6f7f4035d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireDuration: 0.3
+  fireDuration: 0.9
   bulletPrefab: {fileID: 1305726739400181134, guid: 5d609efcb4561f248a7917df59226432,
     type: 3}
-  bulletSpeed: 1.58
+  bulletSpeed: 3.01
   Guns:
   - {fileID: 1027549259}
   - {fileID: 1818070379}
   - {fileID: 1585092782}
   - {fileID: 582674408}
   poolSize: 300
-  returnToPoolDuration: 10
+  returnToPoolDuration: 3
   gameManager: {fileID: 205945725}
 --- !u!4 &1296545794 stripped
 Transform:
@@ -16589,11 +16589,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8a2bdc52b03824db8daf52a82c5e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSmooth: 0.5
+  targetSmooth: 0.2
   target: {fileID: 1234113228}
   dochMechanic: 1
-  centerPosition: {x: 0, y: 0, z: -15.65}
-  trigerScale: {x: 10.19, y: 5.74, z: 3.74}
+  centerPosition: {x: 0, y: 0, z: -28.8}
+  trigerScale: {x: 5.88, y: 5.74, z: 3.74}
+  dochIsAbleDuration: 3.5
+  dochDistance: 12
+  dochDuration: 0.25
 --- !u!1 &1866806146
 GameObject:
   m_ObjectHideFlags: 0

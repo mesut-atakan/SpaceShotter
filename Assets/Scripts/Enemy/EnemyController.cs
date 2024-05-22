@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 
@@ -17,6 +18,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private bool dochMechanic = true;
     [SerializeField] private Vector3 centerPosition;
     [SerializeField] private Vector3 trigerScale;
+    [SerializeField] private float dochIsAbleDuration = 3.5f;
+    [SerializeField] private float dochDistance = 12f;
+    [SerializeField] private float dochDuration = 0.3f;
 
     #endregion <<<< XXX >>>>
 
@@ -40,7 +44,7 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Move();
+        Move();
         DochMechanic();
     }
 
@@ -58,6 +62,7 @@ public class EnemyController : MonoBehaviour
 
     public void Move()
     {
+        if (this.isCurrentDoch == true) return;
         // Variables
         Vector3 _startPos, _targetPos;
 
@@ -81,8 +86,7 @@ public class EnemyController : MonoBehaviour
             _endPos = this.transform.position;
             _endPos.x += xPos;
 
-        //this.transform.position = Vector3.Lerp(_startPos, _endPos, speed);
-        this.transform.DOMove(_endPos, speed).OnComplete(() => this.isCurrentDoch = true);
+        this.transform.DOMove(_endPos, speed).OnComplete(() => this.isCurrentDoch = false);
     }
 
 
@@ -102,11 +106,23 @@ public class EnemyController : MonoBehaviour
             if (_hit.collider.tag == "Bullet")
             {
                 Debug.Log($"Temas {_hit.collider.name}", _hit.collider.gameObject);
-                Move(10, 0.01f);
+                if (Random.Range(0,2) == 0)
+                    Move(dochDistance, dochDuration);
+                else
+                    Move(-dochDistance, dochDuration);
                 this.isCurrentDoch = true;
+                StartCoroutine(IsDochControl());
                 return true;
             }
         }
         return false;
+    }
+
+
+    private IEnumerator IsDochControl()
+    {
+        this.dochMechanic = false;
+        yield return new WaitForSeconds(this.dochIsAbleDuration);
+        this.dochMechanic = true;
     }
 }
