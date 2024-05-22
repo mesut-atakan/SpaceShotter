@@ -22,6 +22,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float dochDistance = 12f;
     [SerializeField] private float dochDuration = 0.3f;
 
+
+    [Header("Classes")]
+
+    [SerializeField] private GunController gunController;
+
     #endregion <<<< XXX >>>>
 
 
@@ -39,6 +44,8 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 GetCenterPosiiton => new Vector3(this.transform.position.x + centerPosition.x, this.transform.position.y, this.transform.position.z + this.centerPosition.z);
 
+    private bool GetIsAttack => (this.transform.position.x - target.transform.position.x) < 5f;
+
     #endregion <<<< XXX >>>>
 
 
@@ -46,6 +53,7 @@ public class EnemyController : MonoBehaviour
     {
         Move();
         DochMechanic();
+        Attack();
     }
 
 
@@ -124,5 +132,17 @@ public class EnemyController : MonoBehaviour
         this.dochMechanic = false;
         yield return new WaitForSeconds(this.dochIsAbleDuration);
         this.dochMechanic = true;
+    }
+
+
+    /// <summary>
+    /// Bu fonksiyon ile AI ateþ etmesini saglayabilirsiniz!
+    /// </summary>
+    private void Attack()
+    {
+        if (GetIsAttack && !this.isCurrentDoch)
+        {
+            this.gunController.Fire();
+        }
     }
 }

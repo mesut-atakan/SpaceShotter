@@ -353,10 +353,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2001578743760304641, guid: 2dd421233b21bfb47aac86017eaa5283,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1027549259}
     - targetCorrespondingSourceObject: {fileID: 1242792315523950639, guid: 2dd421233b21bfb47aac86017eaa5283,
         type: 3}
       insertIndex: -1
@@ -365,18 +361,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1685887848}
-    - targetCorrespondingSourceObject: {fileID: 6730248194318592223, guid: 2dd421233b21bfb47aac86017eaa5283,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1818070379}
-    - targetCorrespondingSourceObject: {fileID: 18766452310924636, guid: 2dd421233b21bfb47aac86017eaa5283,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1585092782}
-    - targetCorrespondingSourceObject: {fileID: 3746932557587567575, guid: 2dd421233b21bfb47aac86017eaa5283,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 582674408}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6919785598676136297, guid: 2dd421233b21bfb47aac86017eaa5283,
         type: 3}
@@ -673,49 +657,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!4 &386885113 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6730248194318592223, guid: 2dd421233b21bfb47aac86017eaa5283,
-    type: 3}
-  m_PrefabInstance: {fileID: 2086985048}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &399197385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 399197386}
-  m_Layer: 0
-  m_Name: FirePivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &399197386
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399197385}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 537926057}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &407031952 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2001578743760304641, guid: 2dd421233b21bfb47aac86017eaa5283,
-    type: 3}
-  m_PrefabInstance: {fileID: 250448773}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,37 +775,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1 &506390075
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 506390076}
-  m_Layer: 0
-  m_Name: FirePivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &506390076
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506390075}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1356342790}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511438153
 GameObject:
   m_ObjectHideFlags: 0
@@ -5772,43 +5682,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517528518}
   m_CullTransparentMesh: 1
---- !u!4 &537926057 stripped
+--- !u!4 &582674408 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2001578743760304641, guid: 2dd421233b21bfb47aac86017eaa5283,
+  m_CorrespondingSourceObject: {fileID: 5893812717014838835, guid: 2dd421233b21bfb47aac86017eaa5283,
+    type: 3}
+  m_PrefabInstance: {fileID: 250448773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &619238604 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5893812717014838835, guid: 2dd421233b21bfb47aac86017eaa5283,
     type: 3}
   m_PrefabInstance: {fileID: 2086985048}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &582674407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 582674408}
-  m_Layer: 0
-  m_Name: FirePivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &582674408
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582674407}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1725184309}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &749671939
 GameObject:
   m_ObjectHideFlags: 0
@@ -6108,74 +5993,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &959323419
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 959323420}
-  m_Layer: 0
-  m_Name: FirePivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &959323420
+--- !u!4 &1027549259 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959323419}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 386885113}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1002043925 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3746932557587567575, guid: 2dd421233b21bfb47aac86017eaa5283,
+  m_CorrespondingSourceObject: {fileID: 2287890319816489589, guid: 2dd421233b21bfb47aac86017eaa5283,
     type: 3}
-  m_PrefabInstance: {fileID: 2086985048}
+  m_PrefabInstance: {fileID: 250448773}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1027549258
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1027549259}
-  m_Layer: 0
-  m_Name: FirePivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1027549259
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027549258}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 407031952}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1057544697
 GameObject:
   m_ObjectHideFlags: 0
@@ -6365,17 +6188,11 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 250448773}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1356342790 stripped
+--- !u!4 &1427478593 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 18766452310924636, guid: 2dd421233b21bfb47aac86017eaa5283,
+  m_CorrespondingSourceObject: {fileID: 8238884159849286192, guid: 2dd421233b21bfb47aac86017eaa5283,
     type: 3}
   m_PrefabInstance: {fileID: 2086985048}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1445857149 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 18766452310924636, guid: 2dd421233b21bfb47aac86017eaa5283,
-    type: 3}
-  m_PrefabInstance: {fileID: 250448773}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1464793868
 GameObject:
@@ -6622,6 +6439,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559336613}
   m_CullTransparentMesh: 1
+--- !u!4 &1559348548 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5224060390524397719, guid: 2dd421233b21bfb47aac86017eaa5283,
+    type: 3}
+  m_PrefabInstance: {fileID: 2086985048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1581363520
 GameObject:
   m_ObjectHideFlags: 0
@@ -6697,37 +6520,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1585092781
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1585092782}
-  m_Layer: 0
-  m_Name: FirePivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1585092782
+--- !u!4 &1585092782 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8238884159849286192, guid: 2dd421233b21bfb47aac86017eaa5283,
+    type: 3}
+  m_PrefabInstance: {fileID: 250448773}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585092781}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1445857149}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1685887847
 GameObject:
   m_ObjectHideFlags: 0
@@ -11590,12 +11388,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1725184309 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3746932557587567575, guid: 2dd421233b21bfb47aac86017eaa5283,
-    type: 3}
-  m_PrefabInstance: {fileID: 250448773}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1757310600
 GameObject:
   m_ObjectHideFlags: 0
@@ -11709,37 +11501,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 300, y: 126.23468}
   m_Pivot: {x: 0.5, y: 1}
---- !u!1 &1818070378
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1818070379}
-  m_Layer: 0
-  m_Name: FirePivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1818070379
+--- !u!4 &1818070379 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5224060390524397719, guid: 2dd421233b21bfb47aac86017eaa5283,
+    type: 3}
+  m_PrefabInstance: {fileID: 250448773}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818070378}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2009705766}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836875095
 GameObject:
   m_ObjectHideFlags: 0
@@ -16597,6 +16364,31 @@ MonoBehaviour:
   dochIsAbleDuration: 3.5
   dochDistance: 12
   dochDuration: 0.25
+  gunController: {fileID: 1857597159}
+--- !u!114 &1857597159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857597156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e81e4bc3b3382f43b36c0c6f7f4035d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDuration: 0.3
+  bulletPrefab: {fileID: 1305726739400181134, guid: 5d609efcb4561f248a7917df59226432,
+    type: 3}
+  bulletSpeed: 5
+  Guns:
+  - {fileID: 1883275351}
+  - {fileID: 1559348548}
+  - {fileID: 1427478593}
+  - {fileID: 619238604}
+  poolSize: 300
+  returnToPoolDuration: 10
+  gameManager: {fileID: 205945725}
 --- !u!1 &1866806146
 GameObject:
   m_ObjectHideFlags: 0
@@ -16742,42 +16534,11 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!1 &1994785811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1994785812}
-  m_Layer: 0
-  m_Name: FirePivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1994785812
+--- !u!4 &1883275351 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994785811}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1002043925}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2009705766 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6730248194318592223, guid: 2dd421233b21bfb47aac86017eaa5283,
+  m_CorrespondingSourceObject: {fileID: 2287890319816489589, guid: 2dd421233b21bfb47aac86017eaa5283,
     type: 3}
-  m_PrefabInstance: {fileID: 250448773}
+  m_PrefabInstance: {fileID: 2086985048}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2086985048
 PrefabInstance:
@@ -16870,10 +16631,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2001578743760304641, guid: 2dd421233b21bfb47aac86017eaa5283,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 399197386}
     - targetCorrespondingSourceObject: {fileID: 1242792315523950639, guid: 2dd421233b21bfb47aac86017eaa5283,
         type: 3}
       insertIndex: -1
@@ -16882,23 +16639,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 511438154}
-    - targetCorrespondingSourceObject: {fileID: 6730248194318592223, guid: 2dd421233b21bfb47aac86017eaa5283,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 959323420}
-    - targetCorrespondingSourceObject: {fileID: 18766452310924636, guid: 2dd421233b21bfb47aac86017eaa5283,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 506390076}
-    - targetCorrespondingSourceObject: {fileID: 3746932557587567575, guid: 2dd421233b21bfb47aac86017eaa5283,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1994785812}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6919785598676136297, guid: 2dd421233b21bfb47aac86017eaa5283,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1857597157}
+    - targetCorrespondingSourceObject: {fileID: 6919785598676136297, guid: 2dd421233b21bfb47aac86017eaa5283,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1857597159}
   m_SourcePrefab: {fileID: 100100000, guid: 2dd421233b21bfb47aac86017eaa5283, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
