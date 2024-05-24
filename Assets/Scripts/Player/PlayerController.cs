@@ -8,6 +8,7 @@ internal class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GunController gunController;
+    [SerializeField] private Vector2 moveClamp;
 
     [Space(15f)]
 
@@ -39,6 +40,13 @@ internal class PlayerController : MonoBehaviour
             this.gunController.Fire();
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(this.moveClamp.x, 0, -100), new Vector3(this.moveClamp.x, 0, 100));
+        Gizmos.DrawLine(new Vector3(this.moveClamp.y, 0, -100), new Vector3(this.moveClamp.y, 0, 100));
+    }
+
 
 
 
@@ -49,10 +57,12 @@ internal class PlayerController : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal") * 0.5f;
         _vertical = Input.GetAxis("Vertical") * 0.5f;
 
-        _xAxisSpeed = _horizontal * moveSpeed * Time.deltaTime * _moveSpeedMultiply;
+        if ((_horizontal > 0 && this.transform.position.x < this.moveClamp.y) || _horizontal < 0 && this.transform.position.x > this.moveClamp.x)
+            _xAxisSpeed = _horizontal * moveSpeed * Time.deltaTime * _moveSpeedMultiply;
+        else _xAxisSpeed = 0;
         _yAxisSpeed = _vertical * moveSpeed * Time.deltaTime * _moveSpeedMultiply;
-        this.rb.velocity = new Vector3(_xAxisSpeed, 0, _yAxisSpeed);
 
+        this.rb.velocity = new Vector3(_xAxisSpeed, 0, _yAxisSpeed);
         MoveRotate();
     }
 
