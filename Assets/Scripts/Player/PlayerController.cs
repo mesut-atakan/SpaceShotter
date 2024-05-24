@@ -1,9 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent (typeof (Rigidbody))]
-internal class PlayerController : MonoBehaviour
+internal class PlayerController : MonoBehaviour, IInteraction
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody rb;
@@ -98,5 +99,19 @@ internal class PlayerController : MonoBehaviour
             _verticalAxis = 0;
             
         this.transform.transform.DOLocalRotate(new Vector3(_verticalAxis, 0, _horizontalAxis), 0.6f);
+    }
+
+    public void Damage(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    public void TakeDamage()
+    {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 }

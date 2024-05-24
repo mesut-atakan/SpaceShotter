@@ -1,10 +1,11 @@
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IInteraction
 {
     #region <<<< Serialize Fields >>>>
     [Header("Character Properties")]
@@ -144,5 +145,19 @@ public class EnemyController : MonoBehaviour
         {
             this.gunController.Fire();
         }
+    }
+
+    public void Damage(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    public void TakeDamage()
+    {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 }
