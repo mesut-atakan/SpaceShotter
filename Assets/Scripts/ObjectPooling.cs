@@ -37,12 +37,9 @@ public class ObjectPooling<T> where T : Component
 
     public ObjectPooling(GameObject objectPrefab, int initialSize, GameObject parentTransform = null)
     {
-        
         this.objectPrefab = new GameObject[1];
         this.objectPrefab[0] = objectPrefab;
-
         CreatePool(initialSize, parentTransform);
-        
     }
     
 

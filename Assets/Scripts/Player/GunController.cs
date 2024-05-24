@@ -12,6 +12,7 @@ public class GunController : MonoBehaviour
     [Header("Gun Properties")]
 
     [SerializeField] private float fireDuration = 0.3f;
+    [SerializeField] private bool flip = false;
 
 
     [Header("Bullet Properties")]
@@ -90,27 +91,21 @@ public class GunController : MonoBehaviour
 
 
 
-
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && this._isFire)
-            Fire();
-    }
-
-
-
     /// <summary>
     /// Bu fonksiyon ile birlikte ates edebilirsiniz!
     /// </summary>
     public void Fire()
     {
+        if (!this._isFire) return;
+        // Variables
         Bullet _fireBullet;
         foreach(Transform _gunTransform in this.Guns)
         {
             _fireBullet = this.ObjectPooling.Get(_fireBullet =>
             {
                 _fireBullet._attack = true;
+                if (this.flip && this.transform.rotation.y != 180)
+                    _fireBullet.transform.rotation = Quaternion.Euler(0, 180, 0);
                 _fireBullet.transform.SetParent(null);
                 _fireBullet.gameObject.SetActive(true);
             });

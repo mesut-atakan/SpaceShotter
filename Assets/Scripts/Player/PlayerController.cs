@@ -7,6 +7,7 @@ internal class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GunController gunController;
 
     [Space(15f)]
 
@@ -22,12 +23,20 @@ internal class PlayerController : MonoBehaviour
     {
         if (this.rb == null)
             this.rb = GetComponent<Rigidbody>();
+        if (this.gunController == null)
+            this.gunController = GetComponent<GunController>();
     }
 
 
     private void FixedUpdate()
     {
         Movement();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            this.gunController.Fire();
     }
 
 
