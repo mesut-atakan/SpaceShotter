@@ -30,6 +30,8 @@ internal class ScoreCalculator : MonoBehaviour
     #region <<<< Private Fields >>>>
 
     Tween _shakeAnim, _textPunchAnim, _textRotateShakeAnim, _scoreIncreaseImageMoveAnim, _imageColorAnim;
+    private int _currentScore;
+    private const int _scoreIncreaseAmount = 7;
     #endregion <<<< XXX >>>>
 
 
@@ -48,7 +50,7 @@ internal class ScoreCalculator : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(InteractionScoreText(Vector3.zero, 2, 1));
+        //StartCoroutine(InteractionScoreText(Vector3.zero, 2, 1));
         
     }
 
@@ -59,7 +61,7 @@ internal class ScoreCalculator : MonoBehaviour
 
     public void IncreaseScore(Vector3 position, float damageAmount, float duration)
     {
-        StartCoroutine(InteractionScoreText(this.transform.position, 2f, 0.7f));
+        //StartCoroutine(InteractionScoreText(this.transform.position, 2f, 0.7f));
         ScoreIncrease();
     }
 
@@ -107,6 +109,9 @@ internal class ScoreCalculator : MonoBehaviour
 
     public void ScoreIncrease()
     {
+        this._currentScore += _scoreIncreaseAmount;
+        this.scoreText.text = this._currentScore.ToString();
+
         this.currentScoreAmount += this.scoreBarIncreaseAmount;
         this.scoreBar.transform.localScale = new Vector2(this.currentScoreAmount, this.scoreBar.localScale.y);
         _shakeAnim = this.scoreBarParrent.transform.DOShakeRotation(0.3f, 10, 12, 60).OnComplete(()
