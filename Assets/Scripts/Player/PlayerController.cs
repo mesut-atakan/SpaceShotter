@@ -8,7 +8,8 @@ internal class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GunController gunController;
-    [SerializeField] private Vector2 moveClamp;
+    [SerializeField] private Vector2 moveClamp_XAxis;
+    [SerializeField] private Vector2 moveClamp_YAxis;
 
     [Space(15f)]
 
@@ -43,8 +44,11 @@ internal class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(new Vector3(this.moveClamp.x, 0, -100), new Vector3(this.moveClamp.x, 0, 100));
-        Gizmos.DrawLine(new Vector3(this.moveClamp.y, 0, -100), new Vector3(this.moveClamp.y, 0, 100));
+        Gizmos.DrawLine(new Vector3(this.moveClamp_XAxis.x, 0, -100), new Vector3(this.moveClamp_XAxis.x, 0, 100));
+        Gizmos.DrawLine(new Vector3(this.moveClamp_XAxis.y, 0, -100), new Vector3(this.moveClamp_XAxis.y, 0, 100));
+        
+        Gizmos.DrawLine(new Vector3(-100, 0, this.moveClamp_YAxis.x), new Vector3(100, 0, this.moveClamp_YAxis.x));
+        Gizmos.DrawLine(new Vector3(-100, 0, this.moveClamp_YAxis.y), new Vector3(100, 0, this.moveClamp_YAxis.y));
     }
 
 
@@ -57,10 +61,13 @@ internal class PlayerController : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal") * 0.5f;
         _vertical = Input.GetAxis("Vertical") * 0.5f;
 
-        if ((_horizontal > 0 && this.transform.position.x < this.moveClamp.y) || _horizontal < 0 && this.transform.position.x > this.moveClamp.x)
+        if ((_horizontal > 0 && this.transform.position.x < this.moveClamp_XAxis.y) || _horizontal < 0 && this.transform.position.x > this.moveClamp_XAxis.x)
             _xAxisSpeed = _horizontal * moveSpeed * Time.deltaTime * _moveSpeedMultiply;
         else _xAxisSpeed = 0;
-        _yAxisSpeed = _vertical * moveSpeed * Time.deltaTime * _moveSpeedMultiply;
+
+        if ((_vertical > 0 && this.transform.position.z < this.moveClamp_YAxis.x) || (_vertical < 0 && this.transform.position.z > this.moveClamp_YAxis.y))
+            _yAxisSpeed = _vertical * moveSpeed * Time.deltaTime * _moveSpeedMultiply;
+        else _yAxisSpeed = 0;
 
         this.rb.velocity = new Vector3(_xAxisSpeed, 0, _yAxisSpeed);
         MoveRotate();

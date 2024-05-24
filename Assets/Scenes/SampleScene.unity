@@ -6125,7 +6125,8 @@ MonoBehaviour:
   moveSpeed: 40
   rb: {fileID: 1234113227}
   gunController: {fileID: 0}
-  moveClamp: {x: -21, y: 21}
+  moveClamp_XAxis: {x: -21, y: 21}
+  moveClamp_YAxis: {x: 28, y: -14}
   moveAxis: 15
 --- !u!54 &1234113227
 Rigidbody:
