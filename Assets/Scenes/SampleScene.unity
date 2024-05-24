@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0007224906, g: 0.0050038025, b: 0.021402124, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -394,6 +394,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1234113229}
+    - targetCorrespondingSourceObject: {fileID: 6919785598676136297, guid: 2dd421233b21bfb47aac86017eaa5283,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1234113230}
   m_SourcePrefab: {fileID: 100100000, guid: 2dd421233b21bfb47aac86017eaa5283, type: 3}
 --- !u!4 &265295743 stripped
 Transform:
@@ -6206,6 +6210,27 @@ MonoBehaviour:
   poolSize: 300
   returnToPoolDuration: 3
   gameManager: {fileID: 205945725}
+--- !u!65 &1234113230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234113225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1296545794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1242792315523950639, guid: 2dd421233b21bfb47aac86017eaa5283,
@@ -16651,7 +16676,7 @@ PrefabInstance:
     - target: {fileID: 6919785598676136297, guid: 2dd421233b21bfb47aac86017eaa5283,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6919785598676136297, guid: 2dd421233b21bfb47aac86017eaa5283,
         type: 3}
